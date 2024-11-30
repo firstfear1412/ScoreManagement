@@ -6,6 +6,7 @@ using ScoreManagement.Model.Table.SubjectScore;
 using ScoreManagement.Model.Table.Language;
 using ScoreManagement.Model.Table.SystemParam;
 using ScoreManagement.Model.Table.WebEvent;
+using ScoreManagement.Model.student_test;
 
 namespace ScoreManagement.Entity
 {
@@ -22,6 +23,7 @@ namespace ScoreManagement.Entity
         public DbSet<SubjectResource> Subjects { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<SubjectScoreResource> SubjectScores { get; set; }
+        public DbSet<student_test> student_test { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -52,6 +54,10 @@ namespace ScoreManagement.Entity
             modelBuilder
                 .Entity<SubjectScoreResource>()
                 .ToTable("SubjectScore")
+                .HasKey(a => new { a.row_id });
+            modelBuilder
+                .Entity<student_test>()
+                .ToTable("student_test")
                 .HasKey(a => new { a.row_id });
         }
 
